@@ -1,0 +1,20 @@
+[project]
+name = "try-pixi"
+version = "0.1.0"
+description = "Add a short description here"
+authors = [{name = "Heegreis", email = "run3113214@gmail.com"}]
+requires-python = ">= 3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tool.pixi.pypi-dependencies]
+try-pixi = { path = ".", editable = true }
+
+[tool.pixi.tasks]
