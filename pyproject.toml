@@ -11,10 +11,22 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.pixi.project]
-channels = ["conda-forge"]
+channels = ["nvidia", "conda-forge", "pytorch"]
 platforms = ["win-64"]
 
 [tool.pixi.pypi-dependencies]
 try-pixi = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+
+[tool.pixi.feature.cuda118.dependencies]
+pytorch = "==2.3.1"
+pytorch-cuda = "11.8.*"
+
+[tool.pixi.feature.cuda121.dependencies]
+pytorch = "==2.3.1"
+pytorch-cuda = "12.1.*"
+
+[tool.pixi.environments]
+cuda118 = ["cuda118"]
+cuda121 = ["cuda121"]
