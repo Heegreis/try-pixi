@@ -1,20 +1,33 @@
 [project]
-name = "try-pixi"
-version = "0.1.0"
-description = "Add a short description here"
 authors = [{name = "Heegreis", email = "run3113214@gmail.com"}]
-requires-python = ">= 3.11"
 dependencies = []
+name = "try-pixi"
+requires-python = "== 3.11"
+version = "0.1.0"
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+build-backend = "hatchling.build"
+requires = ["hatchling"]
 
 [tool.pixi.project]
 channels = ["conda-forge"]
 platforms = ["win-64"]
 
 [tool.pixi.pypi-dependencies]
-try-pixi = { path = ".", editable = true }
+try_pixi = { path = ".", editable = true }
+
+[tool.pixi.feature.gpu.pypi-dependencies]
+torch = { version = "==2.5.1", index = "https://download.pytorch.org/whl/cu124" }
+torchvision = { version = "==0.20.1", index = "https://download.pytorch.org/whl/cu124" }
+
+[tool.pixi.feature.cpu.pypi-dependencies]
+torch = { version = "==2.5.1", index = "https://download.pytorch.org/whl/cpu" }
+torchvision = { version = "==0.20.1", index = "https://download.pytorch.org/whl/cpu" }
+
+[tool.pixi.environments]
+gpu = { features = ["gpu"] }
+# Make CPU the default environment
+default = { features = ["cpu"] }
 
 [tool.pixi.tasks]
+test-gpu = "python test_gpu.py"
