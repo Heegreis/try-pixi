@@ -1,9 +1,9 @@
 [project]
 authors = [{name = "Heegreis", email = "run3113214@gmail.com"}]
-dependencies = []
 name = "try-pixi"
 requires-python = "== 3.11"
 version = "0.1.0"
+dependencies = ["marker-pdf>=1.6.1,<2"]
 
 [build-system]
 build-backend = "hatchling.build"
